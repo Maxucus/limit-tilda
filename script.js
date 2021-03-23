@@ -6,7 +6,7 @@ window.MaxGoods = {
     'KSC-001':20
     'KSC-005':4
     'KSC-010':2
-    'KSC-010':1
+    'KSC-020':1
 };
 
 function tcart__product__updateQuantity(t, r, o, a) 
