@@ -1,4 +1,3 @@
-//Сюда вносим артикул товара и максимальное его количество
 window.MaxGoods = {
     'KSP-001':20
     'KSP-005':4
@@ -10,7 +9,6 @@ window.MaxGoods = {
     'KSC-010':1
 };
 
-//Перезапись функции ручного изменения количества пользователем
 function tcart__product__updateQuantity(t, r, o, a) 
 {
 	if(a > window.MaxGoods[window.tcart.products[o].sku])
@@ -30,7 +28,7 @@ function tcart__product__plus(t) {
 	else
 		alert(tcart__dict(13, "Sorry, limit reached, this is the maximum quantity of goods in stock"));
 }
-//Перезапись функции добавления нового продукта на главной странице "добавить в корзину"
+
 function tcart__addProduct(t) {
 	
     var r = Math.floor(Date.now() / 1e3);
