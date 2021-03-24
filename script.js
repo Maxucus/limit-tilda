@@ -1,3 +1,4 @@
+<script> 
 window.MaxGoods = {
     'KSP-001':20,
     'KSP-005':4,
@@ -9,6 +10,7 @@ window.MaxGoods = {
     'KSC-020':1
 };
 
+
 function tcart__product__updateQuantity(t, r, o, a) 
 {
 	if(a > window.MaxGoods[window.tcart.products[o].sku])
@@ -18,15 +20,15 @@ function tcart__product__updateQuantity(t, r, o, a)
 	}
 	a > 0 ? (void 0 !== window.tcart.products[o].inv && window.tcart.products[o].inv > 0 && a > window.tcart.products[o].inv && (alert(tcart__dict(13, "Sorry, limit reached, this is the maximum quantity of goods in stock")), a = window.tcart.products[o].inv), window.tcart.products[o].quantity = a, window.tcart.products[o].amount = window.tcart.products[o].price * window.tcart.products[o].quantity, window.tcart.products[o].amount = tcart__roundPrice(window.tcart.products[o].amount), r.find(".t706__product-quantity").html(window.tcart.products[o].quantity), "y" === window.tcart.products[o].single && void 0 !== window.tcart.products[o].portion && r.find(".t706__product-portion").html(tcart__showWeight(window.tcart.products[o].quantity * window.tcart.products[o].portion, window.tcart.products[o].unit)), window.tcart.products[o].amount > 0 ? r.find(".t706__product-amount").html(tcart__showPrice(window.tcart.products[o].amount)) : r.find(".t706__product-amount").html("")) : tcart__product__del(t), tcart__updateTotalProductsinCartObj(), $(".t706__carticon-counter").html(window.tcart.total), tcart__reDrawTotal(), tcart__saveLocalObj(), 0 == a && tcart__reDrawProducts()
 }
-//Перезапись функции добавления количества
-function tcart__product__plus(t) {
+
+function tcart__product__plus(t,a) {
     var r = t.closest(".t706__product"),
         o = r.attr("data-cart-product-i");
-	
-	if(window.tcart.products[o].quantity < window.MaxGoods[window.tcart.products[o].sku])
+    if(window.tcart.products[o].quantity < window.MaxGoods[window.tcart.products[o].sku] || window.MaxGoods[window.tcart.products[o].sku] == undefined)
 		(window.tcart.products[o] || (tcart__syncProductsObject__LStoObj(), null != window.tcart.products[o])) && (window.tcart.products[o].quantity > 0 && void 0 !== window.tcart.products[o].inv && window.tcart.products[o].inv > 0 && window.tcart.products[o].inv == window.tcart.products[o].quantity ? alert(tcart__dict(13, "Sorry, limit reached, this is the maximum quantity of goods in stock")) : (window.tcart.products[o].quantity++, window.tcart.products[o].amount = window.tcart.products[o].price * window.tcart.products[o].quantity, window.tcart.products[o].amount = tcart__roundPrice(window.tcart.products[o].amount), r.find(".t706__product-quantity").html(window.tcart.products[o].quantity), "y" === window.tcart.products[o].single && void 0 !== window.tcart.products[o].portion && r.find(".t706__product-portion").html(tcart__showWeight(window.tcart.products[o].quantity * window.tcart.products[o].portion, window.tcart.products[o].unit)), window.tcart.products[o].amount > 0 ? r.find(".t706__product-amount").html(tcart__showPrice(window.tcart.products[o].amount)) : r.find(".t706__product-amount").html(""), tcart__updateTotalProductsinCartObj(), $(".t706__carticon-counter").html(window.tcart.total), tcart__reDrawTotal(), tcart__saveLocalObj()))
 	else
 		alert(tcart__dict(13, "Sorry, limit reached, this is the maximum quantity of goods in stock"));
+	
 }
 
 function tcart__addProduct(t) {
@@ -68,3 +70,4 @@ function tcart__addProduct(t) {
         $(".t706__carticon").removeClass("t706__carticon_neworder")
     }, 2e3))
 }
+</script>
