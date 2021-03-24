@@ -1,4 +1,3 @@
-<script> 
 window.MaxGoods = {
     'KSP-001':20,
     'KSP-005':4,
@@ -70,4 +69,3 @@ function tcart__addProduct(t) {
         $(".t706__carticon").removeClass("t706__carticon_neworder")
     }, 2e3))
 }
-</script>
